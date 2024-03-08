@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using System;
+using System.Xml.Linq;
 
 
 /*
@@ -11,10 +13,11 @@ namespace Assignment3
 {
     internal class PersonHandler
     {
-        private int indexToUse;
-        private Person activeObject = Person.ReferenceEquals
+        private static List<Person> ListOfPersons = new List<Person>();
+        public static int indexToUse;
+        public static Person activeObject = ListOfPersons[indexToUse];
 
-        private List<Person> ListOfPersons = new List<Person>();
+        
         public void CreatePerson(uint _age, string _fName, string _lName, double _height, double _weight)
         {
             ListOfPersons.Add(new Person(_age, _fName, _lName, _height, _weight));
@@ -29,11 +32,11 @@ namespace Assignment3
         //{
         //    const string format = "{0,-12} {1}";
 
-        //    Console.WriteLine(format, "First name:", person.FName);
-        //    Console.WriteLine(format, "Last name:", person.LName);
-        //    Console.WriteLine(format, "Age:", person.Age);
-        //    Console.WriteLine(format, "Height:", person.Height + " cm");
-        //    Console.WriteLine(format, "Weigth:", person.Weight + " kg");
+        //    Console.WriteLine(format, "First name:", ListOfPersons[indexToUse].FName);
+        //    Console.WriteLine(format, "Last name:", ListOfPersons[indexToUse].LName);
+        //    Console.WriteLine(format, "Age:", ListOfPersons[indexToUse].Age);
+        //    Console.WriteLine(format, "Height:", ListOfPersons[indexToUse].Height + " cm");
+        //    Console.WriteLine(format, "Weigth:", ListOfPersons[indexToUse].Weight + " kg");
         //}
 
         public void DisplayAllPersons()
@@ -46,35 +49,49 @@ namespace Assignment3
             }
         }
 
-        public int GetIndexToWorkWith()
+        //public void SetObject()
+        //{   indexToUse = GetIndexToWorkWith();
+        //    activeObject = ListOfPersons[indexToUse];
+        //}
+        public void GetIndexToWorkWith()
         {
             DisplayAllPersons();
             uint index = Utilities.GetUserInputUint("\nChoose index: ");
-            return indexToUse = (int)index;
-            
+            indexToUse = (int)index;
+            activeObject = ListOfPersons[indexToUse];
         }
+
         public void DeletePerson()
         {
-            Console.WriteLine(indexToUse);
-            //Console.WriteLine("Delete person by index: ");
-            //uint index = Utilities.GetUserInputString("Delete person by index:  ");
-            //ListOfPersons.RemoveAt(index); // Efter fiktiv user input "1"
-            //DisplayAllPersons();
-            //Console.ReadLine();
+            DisplayAllPersons();
+            Console.WriteLine("Deleted: " + activeObject.FName + " " + activeObject.LName);
+            ListOfPersons.Remove(activeObject);
+            DisplayAllPersons();
         }
+        //public void DeletePerson(int indexToUse)
+        //{
+        //    Console.WriteLine("Deleted: " + ListOfPersons[indexToUse].FName + " " + ListOfPersons[indexToUse].LName);
+        //    ListOfPersons.RemoveAt(indexToUse);
+        //    DisplayAllPersons();
+        //}
 
         public void ChangeFirstName(int indexToUse)
         {
             string name = Utilities.GetUserInputString("\nNew firstname: ");
-            
-            //Console.Write("{0} changed to: {1}", ListOfPersons[indexToUse].FName {name});
-            //Console.Write(ListOfPersons[indexToUse].FName + " changed to: {0}", {name};
-            //Console.Write(ListOfPersons[indexToUse].FName = name);
+            Console.Write(ListOfPersons[indexToUse].FName);
+            Console.WriteLine($" changed to {name}\n");
             ListOfPersons[indexToUse].FName = name;
-            // Console.WriteLine("Person details - {0} {1}", person1, person2)
-            //Console.WriteLine($"Name changed to: {name}");
-            //ListOfPersons[indexToUse].FName = name;
-            //DisplayPersonDetail();
+            DisplayPersonDetail(indexToUse);
+            Console.ReadLine();
+        }
+
+        public void ChangeLastName(int indexToUse)
+        {
+            string name = Utilities.GetUserInputString("\nNew lastname: ");
+            Console.Write(ListOfPersons[indexToUse].LName);
+            Console.WriteLine($" changed to {name}\n");
+            ListOfPersons[indexToUse].LName = name;
+            DisplayPersonDetail(indexToUse);
             Console.ReadLine();
         }
     }
