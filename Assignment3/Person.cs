@@ -4,6 +4,7 @@ namespace Assignment3
 {
     internal class Person
     {
+
         private uint _age = 0;
         private string _fName = String.Empty;
         private string _lName = String.Empty;
@@ -50,7 +51,6 @@ namespace Assignment3
         { 
             get { return _weight; }
             set { _weight = Math.Round(value, 1); }
-            //set { _weight = Convert.ToDouble(value); }
         }
 
         public Person(uint _age, string _fName, string _lName, double _height, double _weight)

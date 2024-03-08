@@ -29,7 +29,7 @@ namespace Assignment3
             do
             {
                 Console.Write($"{userInput}");
-                userString = Console.ReadLine();
+                userString = Console.ReadLine()!;
 
                 if (string.IsNullOrWhiteSpace(userString))
                 {
