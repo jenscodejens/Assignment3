@@ -1,0 +1,25 @@
+﻿_fName = (value.Length >= 2 && value.Length <= 10) ? value : 0;
+
+=================================================================================================================================
+
+Person person = new Person
+{
+    person.Age = 45,
+    person.FName = "Tina",
+    person.LName = "Jonsson",
+    person.Height = 182,
+    person.Weight = 69.3
+};
+
+=================================================================================================================================
+
+//Console.WriteLine(format,$"First name: \t{person.FName}\nLast name:\t{person.LName}\nAge:\t{person.Age}\nHeight:\t{person.Height}\nWeight:\t{person.Weight}");
+
+=================================================================================================================================
+
+Kollade lite snabbt igen på kappa bara på en double och du skulle kunna göra så här:
+ 
+double bmi = 0.39999;
+double roundedBmi = Math.Floor(bmi * 100) / 100; // Avrundar inte uppåt
+string formattedBmi = roundedBmi.ToString("0.00");
+Console.WriteLine(formattedBmi); // Skriver ut "0.39"
