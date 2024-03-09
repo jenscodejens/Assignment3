@@ -61,6 +61,7 @@ namespace Assignment3
                     handler.DisplayAllPersons();
                     Console.ReadLine();
                 }
+                // Seeda in 3 personer
                 else if (option == 2)
                 {
                     Console.WriteLine();
@@ -70,59 +71,36 @@ namespace Assignment3
                     Console.WriteLine("3 mockup hobbits added");
                     Console.ReadLine();
                 }
+                // DisplayPersonDetails
                 if (option == 3)
                 {
-                    Console.WriteLine();
                     handler.DisplayAllPersons();
                     var activeObject = handler.GetPersonIndex();
-
-                    if (activeObject.listExist)
-                    {
-                        handler.DisplayPersonDetails(activeObject.person);
-                    }
-                    else
-                    {
-                        Console.WriteLine(">> No persons added yet <<\"");
-                    }
+                    handler.DisplayPersonDetails(activeObject);
                     Console.ReadLine();
                 }
+                // ChangeFirstName
                 if (option == 4)
                 {
                     Console.WriteLine();
                     handler.DisplayAllPersons();
                     var activeObject = handler.GetPersonIndex();
-
-                    if (activeObject.listExist)
-                    {
-                        handler.ChangeFirstName(activeObject.person);
-                    }
-                    else
-                    {
-                        Console.WriteLine(">> No persons added yet <<\"");
-                    }
+                    handler.ChangeFirstName(activeObject);
                     Console.ReadLine();
                 }
+                // DeletePerson
                 if (option == 5)
                 {   Console.Clear();
                     handler.DisplayAllPersons();
                     var activeObject = handler.GetPersonIndex();
-
-                    if (activeObject.listExist)
-                    {
-                        handler.DeletePerson(activeObject.person);
-                    }
-                    else
-                    {
-                        Console.WriteLine(">> No persons added yet <<\"");
-                    }
+                    handler.DeletePerson(activeObject);
                     Console.ReadLine();
                 }
-
+                // Avsluta programmet
                 else if (option == 6)
                 {
                     menuInput = false;
                 }
-
             } while (menuInput);
         }
     }

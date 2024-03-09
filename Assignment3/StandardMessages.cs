@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,10 @@ namespace Assignment3
             Console.ReadLine();
         }
 
+        public static void InvalidIndex()
+        {
+            Console.WriteLine("Invalid index");
+        }
         public static void TicketSubMenuMessage()
         {
             Console.Clear();

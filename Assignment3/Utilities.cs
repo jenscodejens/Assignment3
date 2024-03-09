@@ -10,7 +10,6 @@ namespace Assignment3
     {
         public static uint GetUserInputUint(string userInput)
         {
-
             do
             {
                 string input = GetUserInputString(userInput);
@@ -33,7 +32,9 @@ namespace Assignment3
 
                 if (string.IsNullOrWhiteSpace(userString))
                 {
+                    ClearPreviousConsoleLine();
                     Console.WriteLine($"You must enter a valid {userInput}");
+                    ClearPreviousConsoleLine();
                 }
                 else
                 {
@@ -45,5 +46,13 @@ namespace Assignment3
             return userString;
         }
 
+        public static void ClearPreviousConsoleLine()
+        {
+            Console.CursorTop--;
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, currentLineCursor);
+        }
     }
 }
