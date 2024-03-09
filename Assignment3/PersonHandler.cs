@@ -1,12 +1,6 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using System;
-using System.Xml.Linq;
-
-
-/*
+﻿/*
  * 
- *  LÄS IN indexToUse OBJEKTET
+ *  Fixa bool från DisplayAll 
  * 
  */
 namespace Assignment3
@@ -14,9 +8,9 @@ namespace Assignment3
     internal class PersonHandler
     {
         private static List<Person> ListOfPersons = new List<Person>();
-        public int indexToUse;
+        //public int? indexToUse;
         //public static Person? activeObject = null;
-        public static Person? activeObject = null;
+        //public static Person? person = null;
 
 
         public void CreatePerson(uint _age, string _fName, string _lName, double _height, double _weight)
@@ -37,6 +31,8 @@ namespace Assignment3
 
         public void DisplayPersonDetails(Person activeObject)
         {
+            if (ListOfPersons.Count >= 1)
+            {
                 Person person = activeObject;
                 const string format = "{0,-12} {1}";
 
@@ -45,7 +41,11 @@ namespace Assignment3
                 Console.WriteLine(format, "Age:", person.Age);
                 Console.WriteLine(format, "Height:", person.Height + " cm");
                 Console.WriteLine(format, "Weigth:", person.Weight + " kg");
-                //activeObject = null;
+            }
+            else
+            {
+                Console.WriteLine(">> No persons added yet <<\n");
+            }
         }
 
         public void DisplayAllPersons()
@@ -66,61 +66,87 @@ namespace Assignment3
 
         }
 
-        public Person GetPersonIndex()
+        public (bool listExist, Person person) GetPersonIndex()
         {
-            if (ListOfPersons.Count >= 1)
+            if (ListOfPersons.Count == 0)
             {
-                uint index = Utilities.GetUserInputUint("\nChoose index: ");
-                int indexToUse = (int)index; // Initialize indexToUse
-                if (indexToUse >= 0 && indexToUse < ListOfPersons.Count)
-                {
-                    return ListOfPersons[indexToUse];
-                }
-                else
-                {
-                    Console.WriteLine("Invalid index. Please choose a valid index.");
-                }
+                Console.WriteLine(">> No persons added yet <<");
+                return (false, null!);
+            }
+
+            uint index = Utilities.GetUserInputUint("\nChoose index: ");
+            int indexToUse = (int)index; // sätt vilket index
+
+            if (indexToUse >= 0 && indexToUse < ListOfPersons.Count)
+            {
+                return (true, ListOfPersons[indexToUse]);
             }
             else
+            {
+                Console.WriteLine("Invalid index. Please choose a valid index.");
+                return (false, null!);
+            }
+        }
+
+
+        public void ChangeFirstName(Person person)
+        {
+            if (ListOfPersons.Count == 0)
             {
                 Console.WriteLine(">> No persons added yet <<");
             }
-            return null!;
-        }
-
-        public void ChangeFirstName(Person activeObject)
-        {
-            if (activeObject != null)
+            else
             {
-                string newName = Utilities.GetUserInputString("\nNew firstname: ");
-                Console.WriteLine($"{activeObject.FName} changed to {newName}\n");
-                activeObject.FName = newName;
-                DisplayPersonDetails(activeObject);
-                Console.ReadLine();
+                if (person != null)
+                {
+                    string newName = Utilities.GetUserInputString("\nNew firstname: ");
+                    Console.WriteLine($"{person.FName} changed to {newName}\n");
+                    person.FName = newName;
+                    DisplayPersonDetails(person);
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("No person selected. Please choose a valid index.");
+                }
+            }
+        }
+        public void DeletePerson(Person person)
+        {
+            if (ListOfPersons.Count == 0)
+            {
+                Console.WriteLine(">> No persons added yet <<");
             }
             else
             {
-                Console.WriteLine("No person selected. Please choose a valid index.");
+                //uint deletePerson = Utilities.GetUserInputUint("\nDelete: ");
+                Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
+                ListOfPersons.Remove(person);
+                Console.ReadLine();
+
             }
         }
-        //public void ChangeFirstName(Person activeObject)
-        //{
-        //    Person person = activeObject;
-        //    if (person != null)
-        //    {
-        //        string newName = Utilities.GetUserInputString("\nNew firstname: ");
-        //        Console.WriteLine($"{person.FName} changed to {newName}\n");
-        //        person.FName = newName;
-        //        DisplayPersonDetails(person);
-        //        Console.ReadLine();
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("No person selected. Please choose a valid index.");
-        //    }
-        //}
     }
 }
+
+
+//public void ChangeFirstName(Person activeObject)
+//{
+//    Person person = activeObject;
+//    if (person != null)
+//    {
+//        string newName = Utilities.GetUserInputString("\nNew firstname: ");
+//        Console.WriteLine($"{person.FName} changed to {newName}\n");
+//        person.FName = newName;
+//        DisplayPersonDetails(person);
+//        Console.ReadLine();
+//    }
+//    else
+//    {
+//        Console.WriteLine("No person selected. Please choose a valid index.");
+//    }
+//}
+
 
 
 //public void ChangeFirstName()

@@ -23,3 +23,31 @@ double bmi = 0.39999;
 double roundedBmi = Math.Floor(bmi * 100) / 100; // Avrundar inte uppåt
 string formattedBmi = roundedBmi.ToString("0.00");
 Console.WriteLine(formattedBmi); // Skriver ut "0.39"
+
+=================================================================================================================================
+
+        public bool Person GetPersonIndex()
+        { 
+            bool listExists;
+
+            if (ListOfPersons.Count == 0)
+            {
+                Console.WriteLine(">> No persons added yet <<");
+                retutn (false, null!);
+            }
+
+            if (ListOfPersons.Count >= 1)
+            {
+                uint index = Utilities.GetUserInputUint("\nChoose index: ");
+                int indexToUse = (int)index; // Initialize indexToUse
+                if (indexToUse >= 0 && indexToUse < ListOfPersons.Count)
+                {
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Invalid index. Please choose a valid index.");
+                }
+                return (true, ListOfPersons[indexToUse]);
+            }
+        }
