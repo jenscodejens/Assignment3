@@ -8,9 +8,21 @@ namespace Assignment3
     internal class PersonHandler
     {
         private static List<Person> ListOfPersons = new List<Person>();
+
         //public int? indexToUse;
         //public static Person? activeObject = null;
         //public static Person? person = null;
+
+        public static bool ListIsPopulated()
+        {
+            if (ListOfPersons.Count == 0)
+            {
+                // Fiktiva personer istället för CreatePerson()
+                Console.WriteLine("List is empty. Adding mockup list");
+                Console.ReadLine();             
+            }
+            return true;
+        }
 
 
         public void CreatePerson(uint _age, string _fName, string _lName, double _height, double _weight)
@@ -31,21 +43,14 @@ namespace Assignment3
 
         public void DisplayPersonDetails(Person activeObject)
         {
-            if (ListOfPersons.Count >= 1)
-            {
-                Person person = activeObject;
-                const string format = "{0,-12} {1}";
+            Person person = activeObject;
+            const string format = "{0,-12} {1}";
 
-                Console.WriteLine(format, "First name:", person.FName);
-                Console.WriteLine(format, "Last name:", person.LName);
-                Console.WriteLine(format, "Age:", person.Age);
-                Console.WriteLine(format, "Height:", person.Height + " cm");
-                Console.WriteLine(format, "Weigth:", person.Weight + " kg");
-            }
-            else
-            {
-                Console.WriteLine(">> No persons added yet <<\n");
-            }
+            Console.WriteLine(format, "First name:", person.FName);
+            Console.WriteLine(format, "Last name:", person.LName);
+            Console.WriteLine(format, "Age:", person.Age);
+            Console.WriteLine(format, "Height:", person.Height + " cm");
+            Console.WriteLine(format, "Weigth:", person.Weight + " kg");
         }
 
         public void DisplayAllPersons()
