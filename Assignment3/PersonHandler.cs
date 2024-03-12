@@ -1,9 +1,4 @@
-﻿/*
- * 
- *  Fixa bool från DisplayAll 
- * 
- */
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
 namespace Assignment3
 {
@@ -11,7 +6,7 @@ namespace Assignment3
     {
         private static List<Person> ListOfPersons = new List<Person>();
 
-        public static void ListIsPopulated()
+        /*public static void ListIsPopulated()
         {
             if (ListOfPersons.Count == 0)
             {
@@ -21,9 +16,7 @@ namespace Assignment3
                 ListOfPersons.Add(person);
                 Console.ReadLine();
             }
-        }
-
-
+        }*/
 
         public Person CreatePerson(uint _age, string _fName, string _lName, double _height, double _weight)
         {
@@ -41,6 +34,8 @@ namespace Assignment3
             ListOfPersons.Add(new Person(139, "Gimli", "son of Gloin", 137, 99.8));
             ListOfPersons.Add(new Person(139, "Legolas", "Fjant", 188, 80.8));
             ListOfPersons.Add(new Person(139, "Sauron", "Badass", 345, 200.3));
+            Console.WriteLine("3 persons added.");
+            Console.ReadLine();
         }
 
         public void SetAge(Person person, uint age)
@@ -50,7 +45,6 @@ namespace Assignment3
 
         public void DisplayPersonDetails(Person activeObject)
         {
-            ListIsPopulated();
             Person person = activeObject;
             const string format = "{0,-12} {1}";
 
@@ -63,18 +57,17 @@ namespace Assignment3
 
         public void DisplayAllPersons()
         {
-            ListIsPopulated();
             for (int index = 0; index < ListOfPersons.Count; index++)
             {
                 var person = ListOfPersons[index];
                 Console.Write(index);
                 Console.Write($": {person.FName} {person.LName}\n");
             }
+            Console.ReadLine();
         }
 
         public Person GetPersonIndex()
         {
-            ListIsPopulated();
             int indexToUse;
             bool success = false;
             do
@@ -97,28 +90,8 @@ namespace Assignment3
             return ListOfPersons[indexToUse];
         }
 
-
-        //public Person GetPersonIndex()
-        //{
-        //    ListIsPopulated();
-        //    uint index = Utilities.GetUserInputUint("\nChoose index: ");
-        //    int indexToUse = (int)index; // sätt vilket index
-
-        //    if (indexToUse >= 0 && indexToUse < ListOfPersons.Count)
-        //    {
-        //        return ListOfPersons[indexToUse];
-        //    }
-        //    else
-        //    {
-        //        StandardMessages.InvalidIndex();
-        //        return null!;
-        //    }
-        //}
-
-
         public void ChangeFirstName(Person person)
         {
-            ListIsPopulated();
             if (person != null)
             {
                 string newName = Utilities.GetUserInputString("\nNew firstname: ");
@@ -135,13 +108,39 @@ namespace Assignment3
 
         public void DeletePerson(Person person)
         {
-            ListIsPopulated();
-            Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
-            ListOfPersons.Remove(person);
-            Console.ReadLine();
+            if (ListOfPersons.Count == 0) // fixa
+            {
+                PersonHandler handler = new PersonHandler();
+                Utilities utilities = new Utilities();
+                Person newPerson = utilities.GetInputForNewPerson();
+                handler.CreatePerson(newPerson.Age, newPerson.FName, newPerson.LName, newPerson.Height, newPerson.Weight);
+                handler.AddPersonToList(newPerson);
+            }
+            else
+            {
+                Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
+                ListOfPersons.Remove(person);
+            }
+                Console.ReadLine();
         }
     }
 }
 
+/*public Person GetPersonIndex()
+{
+    ListIsPopulated();
+    uint index = Utilities.GetUserInputUint("\nChoose index: ");
+    int indexToUse = (int)index; // sätt vilket index
+
+    if (indexToUse >= 0 && indexToUse < ListOfPersons.Count)
+    {
+        return ListOfPersons[indexToUse];
+    }
+    else
+    {
+        StandardMessages.InvalidIndex();
+        return null!;
+    }
+}*/
 
 

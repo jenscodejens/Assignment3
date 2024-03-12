@@ -46,7 +46,7 @@ namespace Assignment3
                 {
                     Console.SetCursorPosition(left, top);
                     Console.WriteLine($"\n{(option == 1 ? color : "")} Show all persons\u001b[0m ");
-                    Console.WriteLine($"{(option == 2 ? color : "")} Add person(mockups)\u001b[0m");
+                    Console.WriteLine($"{(option == 2 ? color : "")} Add 3 person seeds\u001b[0m");
                     Console.WriteLine($"{(option == 3 ? color : "")} Display person details\u001b[0m");
                     Console.WriteLine($"{(option == 4 ? color : "")} Change first name\u001b[0m");
                     Console.WriteLine($"{(option == 5 ? color : "")} Delete person\u001b[0m");
@@ -75,17 +75,12 @@ namespace Assignment3
                 {
                     Console.WriteLine();
                     handler.DisplayAllPersons();
-                    Console.ReadLine();
                 }
                 // Seeda in 3 personer
                 else if (option == 2)
                 {
                     Console.WriteLine();
-                    handler.CreatePerson(45, "Frodo", "Baggins", 124, 48.5);
-                    handler.CreatePerson(33, "Samwise", "Gamgee", 127, 53.6);
-                    handler.CreatePerson(127, "Gimli", "Son of Gloin", 137, 81.53);
-                    Console.WriteLine("3 mockup hobbits added");
-                    Console.ReadLine();
+                    handler.AddMockPersons();
                 }
                 // DisplayPersonDetails
                 if (option == 3)
