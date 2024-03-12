@@ -12,7 +12,6 @@ namespace Assignment3_Inheritance
         {
             Habitat = _habitat;
         }
-
         public override string DoSound()
         {
             return $"The {GetType().Name} sound like this:\tHooooowl";

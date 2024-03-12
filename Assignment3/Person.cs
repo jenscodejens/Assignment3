@@ -1,8 +1,9 @@
-﻿using System.Xml.Linq;
+﻿using System.Linq.Expressions;
+using System.Xml.Linq;
 
 namespace Assignment3
 {
-    internal class Person
+    internal class Person : CustomExceptions 
     {
 
         private uint _age = 0;
@@ -33,12 +34,26 @@ namespace Assignment3
         public string LName
         {
             get { return _lName; }
-            set {
-                if (value is null)
+            set
+            {
+                try
                 {
-                    throw new System.ArgumentNullException("Person: Last name cannot be null");
+                    if (value == null)
+                    {
+                        throw new ArgumentNullException("Id Argument cannot be null");
+                    }
+                    //_lName = (value.Length >= 3 && value.Length <= 15) ? value : "[Missing data]";
+                    if (value.Length >= 3 && value.Length <= 15)
+                    {
+                        _lName = value;
+                    }
                 }
-                _lName = (value.Length >= 3 && value.Length <= 15) ? value : "[Missing data]"; }
+                // Kallar på CustomException och i den metoden LastNameException och dess output
+                catch (CustomExceptions e) 
+                {
+                    e.LastNameException();
+                }
+            }
         }
 
         public double Height

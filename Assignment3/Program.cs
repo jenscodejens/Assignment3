@@ -23,6 +23,7 @@ namespace Assignment3
         static void Main(string[] args)
         {
             PersonHandler handler = new PersonHandler();
+            Utilities utilities = new Utilities();
             bool menuInput = true;
             do
             {
@@ -39,6 +40,7 @@ namespace Assignment3
                 string color = "\u001b[32m";
                 ConsoleKeyInfo key;
                 bool isSelected = false;
+                //PersonHandler.ListIsPopulated(); // Simulate the call for a CreatePerson at startup
 
                 while (!isSelected)
                 {
@@ -48,18 +50,19 @@ namespace Assignment3
                     Console.WriteLine($"{(option == 3 ? color : "")} Display person details\u001b[0m");
                     Console.WriteLine($"{(option == 4 ? color : "")} Change first name\u001b[0m");
                     Console.WriteLine($"{(option == 5 ? color : "")} Delete person\u001b[0m");
-                    Console.WriteLine($"{(option == 6 ? color : "")} Exits program\u001b[0m");
+                    Console.WriteLine($"{(option == 6 ? color : "")} Add person\u001b[0m");
+                    Console.WriteLine($"{(option == 7 ? color : "")} Exits program\u001b[0m");
 
                     key = Console.ReadKey(false);
 
                     switch (key.Key)
                     {
                         case ConsoleKey.UpArrow:
-                            option = option == 1 ? 6 : option - 1;
+                            option = option == 1 ? 7 : option - 1;
                             break;
 
                         case ConsoleKey.DownArrow:
-                            option = option == 6 ? 1 : option + 1;
+                            option = option == 7 ? 1 : option + 1;
                             break;
 
                         case ConsoleKey.Enter:
@@ -78,8 +81,8 @@ namespace Assignment3
                 else if (option == 2)
                 {
                     Console.WriteLine();
-                    handler.CreatePerson(45, "Frodo", "Baggins", 124, 48.53);
-                    handler.CreatePerson(33, "Samwise", "Gamgee", 127, 53.17);
+                    handler.CreatePerson(45, "Frodo", "Baggins", 124, 48.5);
+                    handler.CreatePerson(33, "Samwise", "Gamgee", 127, 53.6);
                     handler.CreatePerson(127, "Gimli", "Son of Gloin", 137, 81.53);
                     Console.WriteLine("3 mockup hobbits added");
                     Console.ReadLine();
@@ -110,8 +113,17 @@ namespace Assignment3
                     handler.DeletePerson(activeObject);
                     Console.ReadLine();
                 }
+                // CreatePerson
+                if (option == 6)
+                {
+                    Console.Clear();
+                    Person newPerson = utilities.GetInputForNewPerson();
+                    handler.CreatePerson(newPerson.Age, newPerson.FName, newPerson.LName, newPerson.Height, newPerson.Weight);
+                    handler.AddPersonToList(newPerson);
+                    Console.ReadLine();
+                }
                 // Avsluta programmet
-                else if (option == 6)
+                else if (option == 7)
                 {
                     menuInput = false;
                 }

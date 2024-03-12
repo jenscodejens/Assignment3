@@ -3,6 +3,8 @@
  *  Fixa bool från DisplayAll 
  * 
  */
+using System.Xml.Linq;
+
 namespace Assignment3
 {
     internal class PersonHandler
@@ -22,16 +24,23 @@ namespace Assignment3
         }
 
 
-        public void CreatePerson(uint _age, string _fName, string _lName, double _height, double _weight)
+
+        public Person CreatePerson(uint _age, string _fName, string _lName, double _height, double _weight)
         {
-            ListOfPersons.Add(new Person(_age, _fName, _lName, _height, _weight));
+            Person person = new Person(_age, _fName, _lName, _height, _weight);
+            return person;
+        }
+
+        public void AddPersonToList(Person person)
+        {
+            ListOfPersons.Add(person);
         }
 
         public void AddMockPersons()
         {
-            CreatePerson(139, "Gimli", "son of Gloin", 137, 99.8);
-            CreatePerson(139, "Legolas", "Fjant", 188, 80.8);
-            CreatePerson(139, "Sauron", "Badass", 345, 200.3);
+            ListOfPersons.Add(new Person(139, "Gimli", "son of Gloin", 137, 99.8));
+            ListOfPersons.Add(new Person(139, "Legolas", "Fjant", 188, 80.8));
+            ListOfPersons.Add(new Person(139, "Sauron", "Badass", 345, 200.3));
         }
 
         public void SetAge(Person person, uint age)
@@ -127,7 +136,6 @@ namespace Assignment3
         public void DeletePerson(Person person)
         {
             ListIsPopulated();
-            //uint deletePerson = Utilities.GetUserInputUint("\nDelete: ");
             Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
             ListOfPersons.Remove(person);
             Console.ReadLine();

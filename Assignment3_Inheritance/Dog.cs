@@ -9,12 +9,12 @@ namespace Assignment3_Inheritance
 {
     internal class Dog : Animal
     {
-        public string FurColor { get; set; }
+        public string TurColor { get; set; }
         
-        public Dog(string _name, int _age, float _weight, float _height, string _furColor)
+        public Dog(string _name, int _age, float _weight, float _height, string _turColor)
         : base(_name, _age, _weight, _height)
         {
-            FurColor = _furColor;
+            TurColor = _turColor;
         }
 
         public override string DoSound()

@@ -20,6 +20,18 @@ namespace Assignment3
             } while (true);
         }
 
+        public static double GetUserInputDouble(string userInput)
+        {
+            do
+            {
+                string input = GetUserInputString(userInput);
+                if (double.TryParse(input, out double returnUint))
+                {
+                    return returnUint;
+                }
+            } while (true);
+        }
+
         public static string GetUserInputString(string userInput)
         {
             bool success = false;
@@ -46,6 +58,19 @@ namespace Assignment3
             return userString;
         }
 
+        public Person GetInputForNewPerson()
+        {
+            Console.WriteLine("Create new person");
+            string fname = GetUserInputString("First name: ");
+            string lname = GetUserInputString("Last name: ");
+            uint age = GetUserInputUint("Age: ");
+            double height = GetUserInputDouble("Height: ");
+            double weight = GetUserInputDouble("Weight: ");
+
+            var person = new Person(age, fname, lname, height, weight);
+            return person;
+
+        }
         public static void ClearPreviousConsoleLine()
         {
             Console.CursorTop--;

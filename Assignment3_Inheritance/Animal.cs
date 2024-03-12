@@ -24,7 +24,18 @@ namespace Assignment3_Inheritance
 
         public abstract string DoSound();
 
-        // Nyfiken pros/cons mot en vanlig overloadad -this metod i respektive child?
+        /* Och kan egentligen vara exakt så som jag har i övriga djur klasser, Animal som objekt kan ju inte instansieras ändå.
+         * Men antar ni vill belysa overrides användningsområde.
+         * 
+         * Eller så kan man göra en return för Stats() i Animal som returnerar name age weight height
+         * 
+         * och sedan läsa in den return i childklasserna som animalStats = base.Stats();
+         * return base.Stats += <den extra property>
+         *
+         * Gjorde som jag gjorde men gett lite alternativ.
+         */
+
+
         public virtual string Stats()
         {
             string result = string.Empty;
