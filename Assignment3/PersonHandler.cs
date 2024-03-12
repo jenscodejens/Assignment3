@@ -76,7 +76,7 @@ namespace Assignment3
             do
             {
                 uint index = Utilities.GetUserInputUint("Choose index: ");
-                indexToUse = (int)index; //konvertera uint till list-index baserad int
+                indexToUse = (int)index; //konvertera uint till list-index som baseras på int
                 if (indexToUse >= 0 && indexToUse < ListOfPersons.Count)
                 {
                     success = true;

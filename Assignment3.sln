@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment3_Inheritance", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment3_ErrorHandling", "Assignment3_ErrorHandling\Assignment3_ErrorHandling.csproj", "{67F7D387-6692-4C02-B8B9-BCA8773FA15A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{863411E1-5255-4E93-B9BF-0BDC538304A9}"
+	ProjectSection(SolutionItems) = preProject
+		Svar_pa_fragorna.txt = Svar_pa_fragorna.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

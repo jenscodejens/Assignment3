@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Assignment3_Inheritance
 {
     internal abstract class Animal
     {
-        //private string _name;
-        //private int _age;
-        //private float _weight;
-        //private float _height;
-
         public string Name { get; set; }
         public float Age { get; set; }
         public float Weight { get; set; }
@@ -26,5 +23,19 @@ namespace Assignment3_Inheritance
         }
 
         public abstract string DoSound();
+
+        // Nyfiken pros/cons mot en vanlig overloadad -this metod i respektive child?
+        public virtual string Stats()
+        {
+            string result = string.Empty;
+            return result;
+        }
+
+        public override string ToString()
+        {
+            return $"{GetType().Name}";
+        }
     }
 }
+
+

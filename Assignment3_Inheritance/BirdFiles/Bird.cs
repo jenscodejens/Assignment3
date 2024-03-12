@@ -5,33 +5,34 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment3_Inheritance
+namespace Assignment3_Inheritance.BirdFiles
 {
-    internal class Dog : Animal
+    internal class Bird : Animal
     {
-        public string FurColor { get; set; }
-        
-        public Dog(string _name, int _age, float _weight, float _height, string _furColor)
+        public int FlightSpeed { get; set; }
+
+        public Bird(string _name, int _age, float _weight, float _height, int _flightSpeed)
         : base(_name, _age, _weight, _height)
         {
-            FurColor = _furColor;
+            FlightSpeed = _flightSpeed;
         }
 
         public override string DoSound()
         {
-            return $"The {GetType().Name} sound like this:\tBark bark!";
+            return $"The {GetType().Name} sound like this:\tChirp chirp";
         }
 
         public override string Stats()
         {
             PropertyInfo[] properties = GetType().GetProperties();
             StringBuilder sb = new StringBuilder();
-            sb.Append($"The {GetType().Name} these attributes:\t");
+            sb.Append($"The {GetType().Name} got these attributes:\t");
             foreach (PropertyInfo property in properties)
             {
-                sb.Append($"{property.Name}: {property.GetValue(this)}\n");
+                sb.Append(property.Name + " ");
             }
             return sb.ToString();
         }
     }
 }
+

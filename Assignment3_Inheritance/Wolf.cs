@@ -1,4 +1,7 @@
-﻿namespace Assignment3_Inheritance
+﻿using System.Reflection;
+using System.Text;
+
+namespace Assignment3_Inheritance
 {
     internal class Wolf : Animal
     {
@@ -12,7 +15,19 @@
 
         public override string DoSound()
         {
-            return "Neigh *prffff*";
+            return $"The {GetType().Name} sound like this:\tHooooowl";
+        }
+
+        public override string Stats()
+        {
+            PropertyInfo[] properties = GetType().GetProperties();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"The {GetType().Name} got these attributes:\t");
+            foreach (PropertyInfo property in properties)
+            {
+                sb.Append(property.Name + " ");
+            }
+            return sb.ToString();
         }
     }
 }

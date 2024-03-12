@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,18 @@ namespace Assignment3_Inheritance
 
         public override string DoSound()
         {
-            return "Sniff.. sniff";
+            return $"The {GetType().Name} sound like this:\tSniff.. sniff";
+        }
+        public override string Stats()
+        {
+            PropertyInfo[] properties = GetType().GetProperties();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"The {GetType().Name} got these attributes:\t");
+            foreach (PropertyInfo property in properties)
+            {
+                sb.Append(property.Name + " ");
+            }
+            return sb.ToString();
         }
     }
 }

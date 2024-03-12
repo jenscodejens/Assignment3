@@ -14,11 +14,16 @@ namespace Assignment3_ErrorHandling
         }
         
         public override string ToString() => string.Format("{0,-30} {1}", "TextInputError:", UEMessage());
+        /*
+         * Samma funktion som tidigare använd kod.
+         *
+         * public override string ToString(){
+         * const string format = "{0,-12} {1}";
+         * return string.Format(format, "TextInputError:", UEMessage());
+         * return $"TextInputError: {UEMessage()}";
+         * 
+        */
     }
 }
 
-//public override string ToString()
-//{
-//const string format = "{0,-12} {1}";
-//return string.Format(format, "TextInputError:", UEMessage());
-//return $"TextInputError: {UEMessage()}";
+
