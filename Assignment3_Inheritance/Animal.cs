@@ -32,10 +32,8 @@ namespace Assignment3_Inheritance
          * och sedan läsa in den return i childklasserna som animalStats = base.Stats();
          * return base.Stats += <den extra property>
          *
-         * Gjorde som jag gjorde men gett lite alternativ.
+         * Gjorde som jag gjorde men ger lite alternativ.
          */
-
-
         public virtual string Stats()
         {
             string result = string.Empty;

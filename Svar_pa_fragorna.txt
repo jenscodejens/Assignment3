@@ -10,7 +10,7 @@ Fråga:
 Om alla djur behöver det nya attributet, vart skulle man lägga det då?
 
 Svar:
-Eftersom alla djur inklusive samtliga fåglar får sina grundfält från Animal klassen så är det där.
+Eftersom alla djur inklusive samtliga fåglar får sina fält från Animal klassen så är det där.
 ------
 
 Fråga: Försök att lägga till en häst i listan av hundar. Varför fungerar inte det?
@@ -25,13 +25,19 @@ Svar: Basklassen som alla härör från, Animal.
 
 Fråga: Förklara vad det är som händer.
 
-Svar: Nu är ju Animal abstract så kan inte initiera objekt av den (utan workarounds jag inte lärt mig).
+Svar: Nu är ju Animal abstract så kan inte initiera objekt av den (inte utan workarounds jag inte lärt mig).
 Just därför satte jag Stats() i Animal till ett minimum, det skulle vara override i children.
-Poängen är att för objekt av childklasser och om det fanns ett behov av det dvs om de hade extra fält. Så körs deras Stats() istället.
+Poängen är att för objekt av childklasser som har ett behov av extra fält. Så körs deras Stats() istället.
 
 Ponera att jag hade ett objekt av typen Animal, då hade följande skett med Stats():
 Objekt av typen Animal returnerar: Name, Age, Weight, Height
 Objekt av typen Horse returnerar: Name, Age, Weight, Height, CoatColor
+------
+
+Fråga: Varför inte?
+
+Svar: Den kommer inte kommas åt därför att Animal klassen har den inte definierad (som DoSound()).
+Dog är Animal.Dog och listan av djur (även foreach som loopar enbart dogs) måste bestå av Animals (som saknar DogString()).
 
 
 

@@ -45,7 +45,7 @@ namespace Assignment3_Inheritance
             }
 
             // Blev osäker på om uppgiften vill ha properties per djur nu, eller properties och value.
-            // Så ni får properties ovan och i denna properties + value
+            // Så ni får properties ovan och för dogs properties + value
             foreach (Animal animal in animals)
             {
                 if (animal is Dog)

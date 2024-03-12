@@ -8,6 +8,6 @@ namespace Assignment3
 {
     internal class Menu
     {
-        // Bryt ut/ned menyfunktionalitet
+        // Todo: Menyn ska hit
     }
 }

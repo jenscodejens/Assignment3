@@ -10,7 +10,7 @@ namespace Assignment3_Inheritance
     internal class Dog : Animal
     {
         public string TurColor { get; set; }
-        
+
         public Dog(string _name, int _age, float _weight, float _height, string _turColor)
         : base(_name, _age, _weight, _height)
         {
@@ -20,6 +20,11 @@ namespace Assignment3_Inheritance
         public override string DoSound()
         {
             return $"The {GetType().Name} sound like this:\tBark bark!";
+        }
+
+        public string DogString()
+        {
+            return $"Scooby Doo";
         }
 
         public override string Stats()

@@ -1,9 +1,6 @@
-﻿using System.Linq.Expressions;
-using System.Xml.Linq;
-
-namespace Assignment3
+﻿namespace Assignment3
 {
-    internal class Person : CustomExceptions 
+    internal class Person : CustomExceptions
     {
 
         private uint _age = 0;
@@ -23,13 +20,25 @@ namespace Assignment3
             get { return _fName; }
             set
             {
-                if (value is null)
+                try
                 {
-                    throw new System.ArgumentNullException("Person: First name cannot be null");
+                    if (value == null)
+                    {
+                        throw new ArgumentNullException("First name cannot be null");
+                    }
+                    if (value.Length >= 2 && value.Length <= 10)
+                    {
+                        _lName = value;
+                    }
                 }
-                _fName = (value.Length >= 2 && value.Length <= 10) ? value : "[Missing data]";
+                // Kallar på CustomException klassen och i den metoden LastNameException och dess output
+                catch (CustomExceptions e)
+                {
+                    e.FirstNameException();
+                }
             }
         }
+
 
         public string LName
         {
@@ -40,16 +49,14 @@ namespace Assignment3
                 {
                     if (value == null)
                     {
-                        throw new ArgumentNullException("Id Argument cannot be null");
+                        throw new ArgumentNullException("Last name cannot be null");
                     }
-                    //_lName = (value.Length >= 3 && value.Length <= 15) ? value : "[Missing data]";
                     if (value.Length >= 3 && value.Length <= 15)
                     {
                         _lName = value;
                     }
                 }
-                // Kallar på CustomException och i den metoden LastNameException och dess output
-                catch (CustomExceptions e) 
+                catch (CustomExceptions e)
                 {
                     e.LastNameException();
                 }
@@ -63,7 +70,7 @@ namespace Assignment3
         }
 
         public double Weight
-        { 
+        {
             get { return _weight; }
             set { _weight = Math.Round(value, 1); }
         }

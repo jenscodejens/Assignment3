@@ -1,16 +1,23 @@
-﻿using Assignment3;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 
 namespace Assignment3
 {
     internal class Program
     /*  Todo:
      *  Flytta menyn till egen metod utanför Main.
+     *  Fixa listOfPersons.Count == 0 check direkt i för vissa funktioner, Delete, Change name
+     *  Dölja om användare väljer att skriva något istället för använda piltangenter, suddas enbart ut för tillfället.
      *  
-     *  Fixa listOfPersons.Count == 0 check direkt i DeletePerson innan index efterfrågas.
-     *  
-     *  Try Catch ignoreras för tillfället
+     *  Try Catch är definierad som uppgiften kräver men i och med min "överarbetade/testande)-lösning så ignoreras den.
+     *
+     *  Grov beskrivning av funktionaliteten
+     *  ------------------------------------
+     *  Användaren presenteras av en lista med val som styrs med piltanger (menykoden är modifierade utifrån en menylösning jag fann online).
+     *  En lista består av objekt av klassen Person. När listan inte är tom väljer man sitt objket baserat på objektens index i listan. 
+     *  Detta index sparas i activeObject och används vid namnbyte etc.
+     *  Nya objekt skapas antingen genom user input alt. seeda in 3st objekt.
+     *  Återstår saker att bena ut, de står kommenterade men det är dags att släppa detta och läsa in mer kunska,
+     *  så detta får vara den slutliga koden tills jag finner tid och ny kunskap att komma tillbaka och förbättra.
      */
     {
         static void Main(string[] args)
@@ -25,7 +32,7 @@ namespace Assignment3
                 Console.OutputEncoding = Encoding.UTF8;
                 Console.CursorVisible = false;
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Welcome to the wonders of Assignment 4");
+                Console.WriteLine("<< Person Menu >>");
                 Console.ResetColor();
                 Console.WriteLine("\nUse \u001b[32m⬆️\u001b[0mand \u001b[32m⬇️\u001b[0m and \u001b[32mEnter\u001b[32m");
                 (int left, int top) = Console.GetCursorPosition();
@@ -43,7 +50,7 @@ namespace Assignment3
                     Console.WriteLine($"{(option == 4 ? color : "")} Change first name\u001b[0m");
                     Console.WriteLine($"{(option == 5 ? color : "")} Delete person\u001b[0m");
                     Console.WriteLine($"{(option == 6 ? color : "")} Add person\u001b[0m");
-                    Console.WriteLine($"{(option == 7 ? color : "")} Exits program\u001b[0m");
+                    Console.WriteLine($"{(option == 7 ? color : "")} Exit program\u001b[0m");
 
                     key = Console.ReadKey(false);
 
@@ -59,6 +66,9 @@ namespace Assignment3
 
                         case ConsoleKey.Enter:
                             isSelected = true;
+                            break;
+                        default:
+                            Utilities.ClearPreviousConsoleLine();
                             break;
                     }
                 }

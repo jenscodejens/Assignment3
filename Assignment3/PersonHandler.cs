@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace Assignment3
+﻿namespace Assignment3
 {
     internal class PersonHandler
     {
@@ -112,9 +110,8 @@ namespace Assignment3
             Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
             ListOfPersons.Remove(person);
 
-            // Inte världens snyggaste lösning.. men om man tar bort så ingen person återstår skall en ny skapas.
-            // Problem dock att den i program redan frågar om index, check om listOfPersons.Count == 0 måste in redan där.
-            if (ListOfPersons.Count == 0) 
+            // Inte världens snyggaste lösning.. och fungerar inte om listan är dom från start eftersom GetIndex redan körs.
+            if (ListOfPersons.Count == 0)
             {
                 Console.WriteLine("List is now empty lets add a person.");
                 Console.ReadLine();
