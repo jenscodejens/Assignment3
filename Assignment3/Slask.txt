@@ -51,3 +51,85 @@ Console.WriteLine(formattedBmi); // Skriver ut "0.39"
                 return (true, ListOfPersons[indexToUse]);
             }
         }
+
+=================================================================================================================================
+
+        //public void ChangeFirstName(Person activeObject)
+//{
+//    Person person = activeObject;
+//    if (person != null)
+//    {
+//        string newName = Utilities.GetUserInputString("\nNew firstname: ");
+//        Console.WriteLine($"{person.FName} changed to {newName}\n");
+//        person.FName = newName;
+//        DisplayPersonDetails(person);
+//        Console.ReadLine();
+//    }
+//    else
+//    {
+//        Console.WriteLine("No person selected. Please choose a valid index.");
+//    }
+//}
+
+
+
+//public void ChangeFirstName()
+//{
+//    Person person = GetPersonIndex();
+//    if (person != null)
+//    {
+//        string newName = Utilities.GetUserInputString("\nNew firstname: ");
+//        Console.WriteLine($"{person.FName} changed to {newName}\n");
+//        person.FName = newName;
+//        DisplayPersonDetails();
+//        Console.ReadLine();
+//    }
+//    else
+//    {
+//        Console.WriteLine("No person selected. Please choose a valid index.");
+//    }
+//}
+
+
+//public void DeletePerson(Person person)
+//{
+//    var person = activeObject;
+//    DisplayAllPersons();
+//    Console.WriteLine("Deleted: " + person!.FName + " " + person.LName);
+//    ListOfPersons.Remove(person);
+//    DisplayAllPersons();
+//}
+//public void DeletePerson(int indexToUse)
+//{
+//    Console.WriteLine("Deleted: " + ListOfPersons[indexToUse].FName + " " + ListOfPersons[indexToUse].LName);
+//    ListOfPersons.RemoveAt(indexToUse);
+//    DisplayAllPersons();
+//}
+//public void ChangeLastName(int indexToUse)
+//{
+//    string name = Utilities.GetUserInputString("\nNew lastname: ");
+//    Console.Write(ListOfPersons[indexToUse].LName);
+//    Console.WriteLine($" changed to {name}\n");
+//    ListOfPersons[indexToUse].LName = name;
+//    DisplayPersonDetails();
+//    Console.ReadLine();
+//}
+
+//public void SetObject()
+//{   indexToUse = GetIndexToWorkWith();
+//    activeObject = ListOfPersons[indexToUse];
+//}
+
+//public Person GetIndexToWorkWith()
+//{
+//    if (ListOfPersons.Count >= 1)
+//    {
+//        uint index = Utilities.GetUserInputUint("\nChoose index: ");
+//        indexToUse = (int)index;
+//        return activeObject = ListOfPersons[indexToUse];
+//    }
+//    else
+//    {
+//        Console.WriteLine(">> No persons added yet <<");
+//    }
+//}

@@ -5,11 +5,24 @@ using System.Text;
 namespace Assignment3
 {
     internal class Program
+    /*  Återstår mycket fixar
+     *  Göra om så att inte flera funktioner kollar om den finns personer i listan och då seedar.
+     *  
+     *  Tänkte att jag ska ändra så att vid uppstart kommer man automatiskt in på CreateNewPerson.
+     *  Utöver det logik att kolla att om en person tas bort så görs if (ListOfPersons.Count == 0).
+     *  Skulle det hända så hänvisas man automatiskt även där till CreateNewPerson.
+     *  
+     *  Mycket som skall fixas men p.g.a. sjukdome fick jag lägga allt krut på att göra klart
+     *  de andra uppgifterna.
+     *
+     *  Råkade ta bort all try/catch. Fixar detta snarast även det.
+     *  Så i korthet är denna deluppgiften lite på is även om allt utom try/catch är fungerande men
+     *  med brister.
+     */
     {
         static void Main(string[] args)
         {
             PersonHandler handler = new PersonHandler();
-            //Person? activePerson = null;
             bool menuInput = true;
             do
             {
@@ -90,7 +103,8 @@ namespace Assignment3
                 }
                 // DeletePerson
                 if (option == 5)
-                {   Console.Clear();
+                {
+                    Console.Clear();
                     handler.DisplayAllPersons();
                     var activeObject = handler.GetPersonIndex();
                     handler.DeletePerson(activeObject);
