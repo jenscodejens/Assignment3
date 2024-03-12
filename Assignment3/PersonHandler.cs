@@ -47,7 +47,7 @@ namespace Assignment3
         {
             Person person = activeObject;
             const string format = "{0,-12} {1}";
-
+            Console.WriteLine();
             Console.WriteLine(format, "First name:", person.FName);
             Console.WriteLine(format, "Last name:", person.LName);
             Console.WriteLine(format, "Age:", person.Age);
@@ -95,6 +95,7 @@ namespace Assignment3
             if (person != null)
             {
                 string newName = Utilities.GetUserInputString("\nNew firstname: ");
+                Console.Clear();
                 Console.WriteLine($"{person.FName} changed to {newName}\n");
                 person.FName = newName;
                 DisplayPersonDetails(person);
@@ -108,8 +109,16 @@ namespace Assignment3
 
         public void DeletePerson(Person person)
         {
-            if (ListOfPersons.Count == 0) // fixa
+            Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
+            ListOfPersons.Remove(person);
+
+            // Inte världens snyggaste lösning.. men om man tar bort så ingen person återstår skall en ny skapas.
+            // Problem dock att den i program redan frågar om index, check om listOfPersons.Count == 0 måste in redan där.
+            if (ListOfPersons.Count == 0) 
             {
+                Console.WriteLine("List is now empty lets add a person.");
+                Console.ReadLine();
+                Console.Clear();
                 PersonHandler handler = new PersonHandler();
                 Utilities utilities = new Utilities();
                 Person newPerson = utilities.GetInputForNewPerson();
@@ -121,7 +130,7 @@ namespace Assignment3
                 Console.WriteLine("Deleted: " + person.FName + " " + person.LName);
                 ListOfPersons.Remove(person);
             }
-                Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
